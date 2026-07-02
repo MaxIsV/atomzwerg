@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="10" height="4" tilewidth="16" tileheight="16" infinite="0" nextlayerid="35" nextobjectid="1">
+ <tileset firstgid="1" name="greenery" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="trees.png" width="256" height="256"/>
+ </tileset>
+ <layer id="1" name="regions" width="10" height="4">
+  <data encoding="csv">
+61,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="input_greenery" width="10" height="4" visible="0">
+  <data encoding="csv">
+1,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="output_greenery" width="10" height="4" visible="0">
+  <data encoding="csv">
+1,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="output1_greenery" width="10" height="4">
+  <data encoding="csv">
+2,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="5" name="output2_greenery" width="10" height="4">
+  <data encoding="csv">
+3,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="6" name="output3_greenery" width="10" height="4">
+  <data encoding="csv">
+4,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="7" name="output4_greenery" width="10" height="4">
+  <data encoding="csv">
+5,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="8" name="output5_greenery" width="10" height="4">
+  <data encoding="csv">
+6,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="9" name="output6_greenery" width="10" height="4">
+  <data encoding="csv">
+7,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="10" name="output7_greenery" width="10" height="4">
+  <data encoding="csv">
+8,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="11" name="output8_greenery" width="10" height="4">
+  <data encoding="csv">
+9,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="12" name="output9_greenery" width="10" height="4">
+  <data encoding="csv">
+10,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="13" name="output10_greenery" width="10" height="4">
+  <data encoding="csv">
+11,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="14" name="output11_greenery" width="10" height="4">
+  <data encoding="csv">
+61,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="15" name="output12_greenery" width="10" height="4">
+  <data encoding="csv">
+61,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="16" name="output13_greenery" width="10" height="4">
+  <data encoding="csv">
+61,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="17" name="output14_greenery" width="10" height="4">
+  <data encoding="csv">
+61,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="18" name="output15_greenery" width="10" height="4">
+  <data encoding="csv">
+61,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

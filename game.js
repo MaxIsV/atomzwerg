@@ -213,7 +213,7 @@ function create()
 
     healthCounter = this.add.text(18, 11, 'Health: 100', {
         fontSize: '8px',
-        fill: '#000000',
+        fill: '#ffffff',
         fontFamily: 'CustomFont'
     });
     healthCounter.setScrollFactor(0);
@@ -226,7 +226,7 @@ function create()
 
     radiationCounter = this.add.text(18, 26, 'Radiation: 100', {
         fontSize: '8px',
-        fill: '#000000',
+        fill: '#ffffff',
         fontFamily: 'CustomFont'
     });
     radiationCounter.setScrollFactor(0);

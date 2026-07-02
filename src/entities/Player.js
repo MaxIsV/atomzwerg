@@ -1,7 +1,11 @@
 // Player.js
+import Item from "./Item.js";
+
 export default class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, 'main_down');
+
+        this.setDepth(this.depth + 1);
 
         // Spieler zur Szene und Physik hinzufügen
         scene.add.existing(this);
@@ -20,14 +24,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         // Richtungen
         this.facing = true; // true = rechts, false = links
         this.facingUp = false;
+        this.direction = 3; // Player facing direction: 0 = North, 1 = West, 2 = South, 3 = East
 
         // Inventar & Waffen
         this.ownedItemKeys = ['gun'];
+        this.ownedItems = [new Item('Gun', 'gun', 34, 200), null];
         this.activeItemIndex = 0;
         this.lastFired = 0;
 
         // Waffe in der Hand
-        this.heldItem = scene.add.sprite(x, y, this.ownedItemKeys[this.activeItemIndex]);
+
+        this.heldItem = scene.add.sprite(x, y, this.ownedItems[this.activeItemIndex].textureKey);
         this.heldItem.setOrigin(0.5, 0.5);
 
         // Inputs (Tasten)
@@ -44,14 +51,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.health = 0;
             this.die();
         }
-        this.scene.drawHealthBar(); // Sagt der MainScene, dass sie die UI updaten soll
+        // this.scene.drawHealthBar(); // Sagt der MainScene, dass sie die UI updaten soll
     }
 
     addRad(amount) {
         this.radiation += amount;
         if (this.radiation < 0) this.radiation = 0;
         if (this.radiation > 100) this.radiation = 100;
-        this.scene.drawRadiationBar();
+        // this.scene.drawRadiationBar();
     }
 
     die() {
@@ -68,15 +75,42 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         let offsetX = 11;
         let offsetY = 2;
 
-        if (this.facing) {
-            this.heldItem.x = this.x + offsetX;
+        if (this.direction === 0) {
+            this.heldItem.x = this.x;
+            this.heldItem.y = this.y - offsetX;
+
             this.heldItem.flipX = false;
-        } else {
+
+            this.heldItem.angle = -90;
+
+        } else if (this.direction === 1) {
             this.heldItem.x = this.x - offsetX;
+            this.heldItem.y = this.y + offsetY;
+
             this.heldItem.flipX = true;
+
+            this.heldItem.angle = 0;
+
+        } else if (this.direction === 2) {
+            this.heldItem.x = this.x;
+            this.heldItem.y = this.y + offsetX;
+
+            this.heldItem.flipX = true;
+
+            this.heldItem.angle = -90;
+
+        } else if (this.direction === 3) {
+            this.heldItem.x = this.x + offsetX;
+            this.heldItem.y = this.y + offsetY;
+
+            this.heldItem.flipX = false;
+
+            this.heldItem.angle = 0;
         }
-        this.heldItem.y = this.y + offsetY;
-        this.heldItem.setDepth(this.depth + 1);
+
+
+
+        this.heldItem.setDepth(this.depth - 1);
     }
 
     update() {
@@ -86,13 +120,25 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.addRad(this.radFactor);
 
         // Waffenwechsel
-        if (Phaser.Input.Keyboard.JustDown(this.key1) && this.ownedItemKeys[0]) {
+        if (Phaser.Input.Keyboard.JustDown(this.key1)) {
             this.activeItemIndex = 0;
-            this.heldItem.setTexture(this.ownedItemKeys[this.activeItemIndex]);
+
+            if (this.ownedItems[this.activeItemIndex] == null) {
+                this.heldItem.setVisible(false);
+            } else {
+                this.heldItem.setTexture(this.ownedItems[this.activeItemIndex].textureKey);
+                this.heldItem.setVisible(true);
+            }
         }
-        if (Phaser.Input.Keyboard.JustDown(this.key2) && this.ownedItemKeys[1]) {
+        if (Phaser.Input.Keyboard.JustDown(this.key2)) {
             this.activeItemIndex = 1;
-            this.heldItem.setTexture(this.ownedItemKeys[this.activeItemIndex]);
+
+            if (this.ownedItems[this.activeItemIndex] == null) {
+                this.heldItem.setVisible(false);
+            } else {
+                this.heldItem.setTexture(this.ownedItems[this.activeItemIndex].textureKey);
+                this.heldItem.setVisible(true);
+            }
         }
 
         // Bewegung zurücksetzen
@@ -105,21 +151,25 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             moveX = -1;
             this.anims.play('left', true);
             this.facing = false;
+            this.direction = 1;
         }
         if (this.cursors.right.isDown) {
             moveX = 1;
             this.anims.play('right', true);
             this.facing = true;
+            this.direction = 3;
         }
         if (this.cursors.up.isDown) {
             moveY = -1;
             this.anims.play('up', true);
             this.facingUp = true;
+            this.direction = 0;
         }
         if (this.cursors.down.isDown) {
             moveY = 1;
             this.anims.play('down', true);
             this.facingUp = false;
+            this.direction = 2;
         }
 
         // Vektor normalisieren (damit diagonal nicht schneller ist)
@@ -134,26 +184,40 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Schießen
         if (Phaser.Input.Keyboard.JustDown(this.spaceKey) && this.scene.time.now > this.lastFired) {
-            const currentWeapon = this.ownedItemKeys[this.activeItemIndex];
+            /*const currentWeapon = this.ownedItemKeys[this.activeItemIndex];
             if (currentWeapon === 'gun') {
                 this.fireBullet();
                 this.lastFired = this.scene.time.now + 300;
             } else if (currentWeapon === 'shotgun') {
                 this.fireBullet();
                 this.lastFired = this.scene.time.now + 80;
+            }*/
+
+            // Only fire bullets if holding a weapon
+            if (this.ownedItems[this.activeItemIndex]) {
+                const currentWeapon = this.ownedItems[this.activeItemIndex];
+
+                this.fireBullet(currentWeapon.damage);
+
+                this.lastFired = this.scene.time.now + currentWeapon.cooldown;
+
             }
         }
     }
 
-    fireBullet() {
+    fireBullet(damage) {
         // Erzeugt ein Projektil aus der Bullet-Group der MainScene
         let bullet = this.scene.bullets.create(this.heldItem.x, this.heldItem.y, 'bullet');
         if (bullet) {
             let bulletSpeed = 400;
-            if (this.facing) {
+            if (this.direction === 3) {
                 bullet.body.setVelocityX(bulletSpeed);
-            } else {
+            } else if (this.direction === 2) {
+                bullet.body.setVelocityY(bulletSpeed);
+            } else if (this.direction === 1) {
                 bullet.body.setVelocityX(-bulletSpeed);
+            } else if (this.direction === 0) {
+                bullet.body.setVelocityY(-bulletSpeed);
             }
 
             this.scene.time.delayedCall(1500, () => {
@@ -162,5 +226,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 }
             });
         }
+
+
     }
 }
