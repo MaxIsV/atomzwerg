@@ -1,22 +1,22 @@
-// FastZombie.js
+// BigZombie.js
 import Enemy from './Enemy.js';
 
-export default class FastZombie extends Enemy {
+export default class BigZombie extends Enemy {
     constructor(scene, x, y) {
         // Ruft Enemy auf mit: texture='zombie_fast', HP=50, Speed=150
-        super(scene, x, y, 'zombie_small_right', 100, 50);
+        super(scene, x, y, 'zombie_big_right', 250, 25);
 
-        this.animPrefix = 'zSmall';
+        this.animPrefix = 'zBig';
 
-        this.weight = 50;
+        this.weight = 100;
 
         // Chance to drop a specific loot from the mob
         this.lootChances = {
-            iod: 10,
+            iod: 50,
             medkit: 10,
-            bat: 20,
-            gun: 57,
-            shotgun: 3
+            bat: 25,
+            gun: 10,
+            shotgun: 5
         };
     }
 

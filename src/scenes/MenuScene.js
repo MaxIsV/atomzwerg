@@ -9,7 +9,7 @@ export default class MenuScene extends Phaser.Scene {
     }
 
     create() {
-        let playButton = this.add.image(160, 120, 'button').setInteractive();
+        let playButton = this.add.image(220, 120, 'button').setInteractive();
 
         // Wenn der Button geklickt wird, starte das eigentliche Spiel
         playButton.on('pointerdown', () => {

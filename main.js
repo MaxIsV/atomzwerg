@@ -2,10 +2,11 @@
 import MenuScene from './src/scenes/MenuScene.js';
 import MainScene from './src/scenes/MainScene.js';
 import UIScene from "./src/scenes/UIScene.js";
+import Level1 from "./src/scenes/Level1.js";
 
 const config = {
     type: Phaser.AUTO,
-    width: 320,
+    width: 440,
     height: 240,
     physics: {
         default: 'arcade',
@@ -18,7 +19,7 @@ const config = {
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
     backgroundColor: '#000006',
-    scene: [MenuScene, MainScene, UIScene] // Hier wird deine neue Scene-Klasse geladen!
+    scene: [MenuScene, MainScene, UIScene, Level1] // Hier wird deine neue Scene-Klasse geladen!
 };
 
 // Startet Phaser erst, wenn Font geladen ist
