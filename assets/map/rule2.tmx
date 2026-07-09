@@ -11,7 +11,7 @@
 0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="3" name="input_greenery2" width="10" height="4" visible="0">
+ <layer id="3" name="input_greenery2" width="10" height="4">
   <data encoding="csv">
 1,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,
@@ -19,7 +19,7 @@
 0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="2" name="output_greenery2" width="10" height="4" visible="0">
+ <layer id="2" name="output_greenery2" width="10" height="4">
   <data encoding="csv">
 1,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,

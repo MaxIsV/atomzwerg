@@ -7,8 +7,12 @@ export default class BigZombie extends Enemy {
         super(scene, x, y, 'zombie_big_right', 250, 25);
 
         this.animPrefix = 'zBig';
+        this.hitFrameIndex = 4; // Hit-Frame index 1-basiert
 
+        this.chaseDist = 200;
         this.weight = 100;
+        this.attackDist = 20;
+        this.damage = 30;
 
         // Chance to drop a specific loot from the mob
         this.lootChances = {

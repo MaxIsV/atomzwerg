@@ -7,8 +7,12 @@ export default class FastZombie extends Enemy {
         super(scene, x, y, 'zombie_small_right', 100, 50);
 
         this.animPrefix = 'zSmall';
+        this.hitFrameIndex = 3; // Hit-Frame index 1-basiert
 
+        this.chaseDist = 175;
         this.weight = 50;
+        this.attackDist = 10;
+        this.damage = 10;
 
         // Chance to drop a specific loot from the mob
         this.lootChances = {

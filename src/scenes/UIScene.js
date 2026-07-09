@@ -42,18 +42,20 @@ export default class UIScene extends Phaser.Scene {
         if (!this.trackedPlayer) return;
 
         // Die UI holt sich einfach die Daten live aus dem Spieler-Objekt!
-        this.healthCounter.setText('Health: ' + this.trackedPlayer.health.toFixed(2));
-        this.radiationCounter.setText('Radiation: ' + this.trackedPlayer.radiation.toFixed(2));
+        this.healthCounter.setText('Health: ' + this.trackedPlayer.health.toFixed(1));
+        this.radiationCounter.setText('Radiation: ' + this.trackedPlayer.radiation.toFixed(1));
 
         this.drawHealthBar();
         this.drawRadiationBar();
 
         this.updateCounters();
+
+        this.drawWeapons();
     }
 
     updateCounters() {
-        this.healthCounter.setText('Health: ' + this.trackedPlayer.health.toFixed(2));
-        this.radiationCounter.setText('Radiation: ' + this.trackedPlayer.radiation.toFixed(2));
+        this.healthCounter.setText('Health: ' + this.trackedPlayer.health.toFixed(1));
+        this.radiationCounter.setText('Radiation: ' + this.trackedPlayer.radiation.toFixed(1));
     }
 
     drawHealthBar() {

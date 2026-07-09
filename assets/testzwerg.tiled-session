@@ -1,0 +1,313 @@
+{
+    "activeFile": "map/map2.tmx",
+    "expandedProjectPaths": [
+        "map",
+        ".",
+        "level1"
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx": {
+            "scale": 0.8747209821428571,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 512.1633173843701,
+                "y": 448.14290271132387
+            }
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#background": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#buildB": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#grass": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#greenery": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#road": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#street acc": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#street acc2": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#top objects2": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Downloads/level2.tmx#top objects3": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Maksym/Studium/MI_2/Atomzwerg/potom.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Maksym/Studium/MI_2/Atomzwerg/potom3.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Maksym/Studium/MI_2/Atomzwerg/пгт.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Neu/Maksym/Studium/MI_2/Atomzwerg/стена.tsx": {
+            "scaleInDock": 1
+        },
+        "level1/level1.tmx": {
+            "expandedObjectLayers": [
+                4,
+                3
+            ],
+            "scale": 2,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 194.75,
+                "y": 237.5
+            }
+        },
+        "level1/level1.tmx#floor": {
+            "scaleInDock": 1
+        },
+        "level1/level1.tmx#walls": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx": {
+            "expandedObjectLayers": [
+                7,
+                5
+            ],
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 441,
+                "y": 467.5
+            }
+        },
+        "level1/level2.tmx#background": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx#buildB": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx#grass": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx#greenery": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx#road": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx#street acc": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx#street acc2": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx#top objects2": {
+            "scaleInDock": 1
+        },
+        "level1/level2.tmx#top objects3": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx": {
+            "scale": 11,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 611.1818181818182,
+                "y": 280.1818181818182
+            }
+        },
+        "level1/level22.tmx#background": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx#buildB": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx#grass": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx#greenery": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx#road": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx#street acc": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx#street acc2": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx#top objects2": {
+            "scaleInDock": 1
+        },
+        "level1/level22.tmx#top objects3": {
+            "scaleInDock": 1
+        },
+        "level1/rule3.tmx": {
+            "scale": 65.846875,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 7.995823643870723,
+                "y": 7.092212044990747
+            }
+        },
+        "level1/rule3.tmx#floor": {
+            "scaleInDock": 1
+        },
+        "level2/level1.tmx": {
+            "scale": 1.1811383928571428,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 446.60304261551545,
+                "y": 224.3598223566096
+            }
+        },
+        "level2/level1.tmx#floor": {
+            "scaleInDock": 1
+        },
+        "level2/level1.tmx#walls": {
+            "scaleInDock": 1
+        },
+        "map/map.tmx": {
+            "scale": 0.8480729166666666,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.5011361542713,
+                "y": 485.8072836700854
+            }
+        },
+        "map/map2.tmx": {
+            "expandedObjectLayers": [
+                22,
+                21
+            ],
+            "scale": 0.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 926,
+                "y": 795
+            }
+        },
+        "map/map2.tmx#buildB": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map/map2.tmx#buildW": {
+            "scaleInDock": 1
+        },
+        "map/map2.tmx#first": {
+            "scaleInDock": 1
+        },
+        "map/map2.tmx#grass": {
+            "scaleInDock": 1
+        },
+        "map/map2.tmx#road": {
+            "scaleInDock": 1
+        },
+        "map/map2.tmx#second": {
+            "scaleInDock": 1
+        },
+        "map/map2.tmx#street acc": {
+            "scaleInDock": 1
+        },
+        "map/map2.tmx#street acc2": {
+            "scaleInDock": 1
+        },
+        "map/map2.tmx#third": {
+            "scaleInDock": 1
+        },
+        "map/map2.tmx#top": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map/map2.tmx#top objects3": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map/map2.tmx#trees": {
+            "scaleInDock": 1
+        },
+        "map/rule1.tmx": {
+            "scale": 6.614375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 80.05291505244259,
+                "y": 32.05140319380139
+            }
+        },
+        "map/rule1.tmx#greenery": {
+            "scaleInDock": 1
+        },
+        "map/rule2.tmx": {
+            "scale": 6.614375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 80.05291505244259,
+                "y": 32.05140319380139
+            }
+        },
+        "map/rule2.tmx#greenery": {
+            "scaleInDock": 1
+        },
+        "map/top objects3.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "testzwerg.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.25,
+                "y": 320.25
+            }
+        },
+        "testzwerg.tmx#first": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "testzwerg.tmx#fourth": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "testzwerg.tmx#second": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "testzwerg.tmx#third": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Neu/Maksym/Studium/MI_2/Atomzwerg/assets/level1",
+    "last.externalTilesetPath": "C:/Users/Neu/Maksym/Studium/MI_2/Atomzwerg/assets/map",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "openFiles": [
+        "level1/level2.tmx",
+        "map/map2.tmx"
+    ],
+    "project": "testzwerg.tiled-project",
+    "recentFiles": [
+        "level1/level2.tmx",
+        "map/map2.tmx",
+        "map/top objects3.tsx",
+        "level1/level22.tmx",
+        "C:/Users/Neu/Downloads/level2.tmx",
+        "map/rule2.tmx",
+        "map/rule1.tmx",
+        "level1/level1.tmx",
+        "level1/rule3.tmx",
+        "level2/level1.tmx",
+        "testzwerg.tmx",
+        "map/map.tmx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)"
+}

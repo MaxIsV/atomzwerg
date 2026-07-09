@@ -4,18 +4,29 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, hp, speed) {
         super(scene, x, y, texture);
 
-        this.animPrefix = 'zBig';
+        this.animPrefix = 'zBig'; // Von unterklassen überschrieben
+        this.hitFrameIndex = 3; // Hit-Frame index 1-basiert
+        this.lastDir = 'left';
+
+        this.isDead = false;
+
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
         this.body.setCollideWorldBounds(true);
+        this.setDepth(-2);
 
         // Individuelle Werte, die von außen übergeben werden
         this.hp = hp;
         this.maxHp = hp;
         this.speed = speed;
-        this.chaseDist = 100;
+        this.chaseDist = 150;
         this.weight = 100;
+        this.attackDist = 10;
+        this.damage = 20;
+
+        // To define if enemy is currently attacking
+        this.isAttacking = false;
 
         // Chance to drop a specific loot from the mob
         this.lootChances = {
@@ -43,49 +54,69 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         return null;
     }
 
+    attackPlayer(player) {
+        const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+
+        if (dist <= this.attackDist) {
+            this.doDamage(player);
+        }
+    }
+
     // Gemeinsame KI-Logik für das Verfolgen
     chasePlayer(player, chaseDist) {
-        if (this.isKnockedBack) {
+        if (this.isKnockedBack || this.isDead) {
             this.handleAnimation(this.body.velocity);
             return;  // Velocity nicht anfassen, Knockback wirken lassen
         }
 
+        this.body.setVelocity(0);
+
+        if(this.isAttacking) return; // laufender Angriff aus früherem Frame
+
+        this.attackPlayer(player);
+        if (this.isAttacking) return;   // ← NEU: Angriff wurde GERADE gestartet
+
         const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
 
-        if (dist < chaseDist) {
+        if (dist < chaseDist && dist > this.attackDist) {
             let dirX = player.x - this.x;
             let dirY = player.y - this.y;
             let vector = new Phaser.Math.Vector2(dirX, dirY).normalize();
 
             this.body.setVelocity(vector.x * this.speed, vector.y * this.speed);
 
-        } else {
-            this.body.setVelocity(0);
+            this.lastDir = this.getDir(vector);
         }
         this.handleAnimation(this.body.velocity);
     }
 
     // Standard-Animation (kann von Unterklassen überschrieben werden)
     handleAnimation(vector) {
-        /*if (vector.x > 0) this.anims.play('zBigRight', true);
-        else if (vector.x < 0) this.anims.play('zBigLeft', true);*/
+        if (this.isAttacking || this.isDead) return;   // Attack-Animation nicht anfassen
 
         if (Math.abs(vector.x) < 1 && Math.abs(vector.y) < 1) {
-            this.setFrame(0);
-            this.anims.stop();
-            return;
-        }
+            this.anims.play(this.animPrefix + '_idle_' + this.lastDir, true);
 
-        let dir;
-        if (Math.abs(vector.x) > Math.abs(vector.y)) {
-            dir = vector.x > 0 ? 'Right' : 'Left';
         } else {
-            dir = vector.y > 0 ? 'Down' : 'Up';
+            this.anims.play(this.animPrefix + '_' + this.getDir(vector), true);
         }
-        this.anims.play(this.animPrefix + dir, true);
+    }
+
+    // Extract a one of 4 possible directions out of given Vector
+    getDir(vector) {
+        if (Math.abs(vector.x) > Math.abs(vector.y)) {
+            return vector.x > 0 ? 'right' : 'left';
+        } else {
+            return vector.y > 0 ? 'down' : 'up';
+        }
     }
 
     applyKnockback(sourceX, sourceY, weight = 75, duration = 200) {
+        if (this.isDead) {
+            this.setVelocity(0);
+            return;
+        }
+
         const angle = Phaser.Math.Angle.Between(sourceX, sourceY, this.x, this.y);
 
         const force = 130 - weight;
@@ -103,6 +134,8 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     takeDamage(amount, bullet) {
+        if(this.isDead) return;
+
         if (bullet && this.scene.bullets.contains(bullet)) {
             bullet.destroy(); // Kugel zerstören
         } else {
@@ -111,6 +144,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
 
         this.showDamageNumber(amount);
         this.hp -= amount;
+        //this.scene.sound.play('zombie_damage');
 
         if (this.hp <= 0) {
             // Über 'this.scene' kann der Zombie auf Methoden der MainScene zugreifen!
@@ -129,16 +163,65 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
             const result = this.rollLoot();
             if (result) lootActions[result]();
 
-            this.destroy();
+            this.lastDir = this.lastDir === 'left' ? 'left' : 'right';
+
+            this.anims.play(this.animPrefix + '_death_' + this.lastDir, true);
+            this.scene.sound.play(this.animPrefix + '_death');
+
+            this.body.enable = false;
+            this.isDead = true;
+            //this.body.
+            this.setVelocity(0);
+
+            this.scene.time.delayedCall(3000, () => {
+                this.destroy();
+            });
         }
     }
 
     doDamage(player) {
-        player.addHealth(-0.3); // Direkt die Methode des Spielers aufrufen
+        if (this.isAttacking) return;
+        this.isAttacking = true;
+
+        let dir = this.getDir(new Phaser.Math.Vector2(player.x - this.x, player.y - this.y));
+        const animKey = this.animPrefix + '_att_' + dir;
+
+        this.anims.play(animKey);
+        this.scene.sound.play('zombie_attack', { volume: 0.3 });
+
+        // Bei jedem Frame-Wechsel prüfen, ob wir beim Hit-Frame sind
+        const onFrame = (anim, frame) => {
+            // frame.index ist 1-basiert (erstes Frame = 1, nicht 0). Anders als im Spritesheet!
+            if (anim.key === animKey && frame.index === this.hitFrameIndex) { // Hit-Frame
+                const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+
+                // Die Distanz neu auswerten, falls Spieler weggerannt ist
+                if (dist < this.attackDist) {
+
+                    player.addHealth(-this.damage);
+                    player.applyKnockback(this.x, this.y, this.weight * 2);
+                }
+                this.off('animationupdate', onFrame);
+            }
+        };
+        this.on('animationupdate', onFrame);
+
+        this.once('animationcomplete-' + this.animPrefix + '_att_' + dir, () => {
+           this.isAttacking = false;
+            this.off('animationupdate', onFrame); // aufräumen, falls Hit-Frame nie erreicht
+        });
+
+        // Fallback-Timer im Zombie, wie beim Player – falls die Animation doch mal unterbrochen wird
+        this.scene.time.delayedCall(2000, () => {
+            this.isAttacking = false;
+            this.off('animationupdate', onFrame); // aufräumen, falls Hit-Frame nie erreicht
+        });
     }
 
     // Wir übergeben einfach das Grafik-Objekt der Szene
     drawHealthBar(graphics) {
+        if (this.isDead) return;
+
         const barWidth = 20;
         const barHeight = 3;
         const barX = this.x - (barWidth / 2);
