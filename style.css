@@ -17,6 +17,14 @@ canvas {
     image-rendering: crisp-edges;              /* Standard für scharfe Kanten */
     image-rendering: pixelated;                /* Standard für modernen Pixel-Art-Look */
 }
+#game-container {
+    width: 100vw;
+    height: 100vh;
+    /* Eigenschaften für das Hintergrundbild */
+    background-size: contain;       /* Oder 'contain', je nachdem wie es skaliert werden soll */
+    background-position: center;
+    background-repeat: no-repeat;
+}
 @font-face {
     font-family: 'CustomFont'; /* Das ist der Name, den wir später in Phaser nutzen */
     src: url('assets/font.ttf') format('truetype');

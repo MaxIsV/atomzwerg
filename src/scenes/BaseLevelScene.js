@@ -322,18 +322,8 @@ export default class BaseLevelScene extends Phaser.Scene {
     // Gemeinsame create-Logik für ALLE Levels
     setupLevel(map, startX, startY) {
 
-        // Kisten (Chests)
-        /*this.chests = this.physics.add.group();
-        const chestObjects = map.createFromObjects('interactions', { name: 'barrel', key: 'star' });
-        this.chests.addMultiple(chestObjects);
-
-        this.chests.children.iterate((chest) => {
-            chest.body.setImmovable(true);
-
-            chest.setData('opened', false);
-
-            chest.setData('type', chest.properties?.find(prop => prop.name === 'type')?.value);
-        });*/
+        // Background color to replace background image from menu
+        this.cameras.main.setBackgroundColor('#2d2d2d');
 
         // 1.
         const barrelData = map.filterObjects('interactions', obj => obj.name === 'barrel');
@@ -426,7 +416,7 @@ export default class BaseLevelScene extends Phaser.Scene {
             this.player,
             this.portals,
             this.enterPortal, // Callback: läuft bei Kollision
-            () => Phaser.Input.Keyboard.JustDown(this.player.interactKey), // processCallback (optional, s.u.)
+            null, // processCallback (optional, s.u.)
             this
         );
 

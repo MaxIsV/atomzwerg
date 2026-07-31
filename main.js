@@ -8,6 +8,15 @@ const config = {
     type: Phaser.AUTO,
     width: 440,
     height: 240,
+    transparent: true,
+    parent: 'game-container',
+    plugins: {
+        global: [{
+            key: 'rexBBCodeTextPlugin',
+            plugin: window.rexbbcodetextplugin,
+            start: true
+        }]
+    },
     physics: {
         default: 'arcade',
     },
